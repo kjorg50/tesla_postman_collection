@@ -34,16 +34,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/vehicles",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/vehicles",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"vehicles"
 					]
 				}
@@ -62,16 +57,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/{{id}}",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/vehicles/{{id}}",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"vehicles",
 						"{{id}}"
 					]
@@ -91,16 +81,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/{{id}}/vehicle_data",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/vehicles/{{id}}/vehicle_data",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"vehicles",
 						"{{id}}",
 						"vehicle_data"
@@ -121,16 +106,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/users/me",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/users/me",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"users",
 						"me"
 					]
@@ -150,16 +130,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/users/feature_config",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/users/feature_config",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"users",
 						"feature_config"
 					]
@@ -179,19 +154,106 @@
 					}
 				],
 				"url": {
-					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/{{id}}/wake_up",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/vehicles/{{id}}/wake_up",
 					"host": [
-						"owner-api",
-						"teslamotors",
-						"com"
+						"{{baseUrl}}"
 					],
 					"path": [
-						"api",
-						"1",
 						"vehicles",
 						"{{id}}",
 						"wake_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop HVAC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/{{id}}/command/auto_conditioning_stop",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						"{{id}}",
+						"command",
+						"auto_conditioning_stop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start HVAC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/{{id}}/command/auto_conditioning_start",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						"{{id}}",
+						"command",
+						"auto_conditioning_start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate Trunk",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"which_trunk\": \"rear\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/{{id}}/command/actuate_trunk",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						"{{id}}",
+						"command",
+						"actuate_trunk"
 					]
 				}
 			},
@@ -227,6 +289,11 @@
 		{
 			"key": "id",
 			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://owner-api.teslamotors.com/api/1",
 			"type": "string"
 		}
 	]
